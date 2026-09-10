@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitEngine - Gerador Avançado de Treinos & Dieta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>FitEngine <span>Pro</span></h1>
+    <p>Plataforma Inteligente de Prescrição de Treinos e Nutrição</p>
+  </header>
+
+  <main class="container">
+    <!-- Formulário do Perfil -->
+    <section class="card sidebar">
+      <h2>Perfil do Atleta</h2>
+      <form id="profile-form">
+        <div class="form-group row">
+          <div>
+            <label for="gender">Gênero</label>
+            <select id="gender">
+              <option value="male">Masculino</option>
+              <option value="female">Feminino</option>
+            </select>
+          </div>
+          <div>
+            <label for="age">Idade</label>
+            <input type="number" id="age" value="25" min="15" max="90" required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div>
+            <label for="weight">Peso (kg)</label>
+            <input type="number" id="weight" value="75" step="0.1" required>
+          </div>
+          <div>
+            <label for="height">Altura (cm)</label>
+            <input type="number" id="height" value="175" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="goal">Objetivo Principal</label>
+          <select id="goal">
+            <option value="hypertrophy">Ganho de Massa Muscular (Hipertrofia)</option>
+            <option value="fat_loss">Emagrecimento / Definição</option>
+            <option value="maintenance">Manutenção / Condicionamento</option>
+          </select>
+        </div>
+
+        <div class="form-group row">
+          <div>
+            <label for="days">Dias/Semana</label>
+            <select id="days">
+              <option value="3">3 Dias (ABC)</option>
+              <option value="4">4 Dias (Upper/Lower)</option>
+              <option value="5">5 Dias (Push/Pull/Legs/UL)</option>
+              <option value="6">6 Dias (PPL x2)</option>
+            </select>
+          </div>
+          <div>
+            <label for="equipment">Local do Treino</label>
+            <select id="equipment">
+              <option value="gym">Academia Completa</option>
+              <option value="home">Casa / Peso Corporal</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Gerar Prescrição Completa</button>
+      </form>
+    </section>
+
+    <!-- Resultados -->
+    <section class="content">
+      <!-- Painel de Métricas Corporal -->
+      <div id="metrics-card" class="card hidden">
+        <h2>Sua Avaliação Metabólica</h2>
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <span class="label">IMC</span>
+            <span id="imc-val" class="val">--</span>
+            <span id="imc-status" class="sub">--</span>
+          </div>
+          <div class="metric-box">
+            <span class="label">Taxa Metabólica Basal</span>
+            <span id="bmr-val" class="val">--</span>
+            <span class="sub">kcal/dia</span>
+          </div>
+          <div class="metric-box">
+            <span class="label">Meta Calórica</span>
+            <span id="calories-val" class="val">--</span>
+            <span class="sub">kcal/dia</span>
+          </div>
+        </div>
+
+        <h3>Meta de Macronutrientes</h3>
+        <div class="macros-grid">
+          <div class="macro-box protein">Proteínas: <strong id="prot-val">0g</strong></div>
+          <div class="macro-box carbs">Carboidratos: <strong id="carb-val">0g</strong></div>
+          <div class="macro-box fats">Gorduras: <strong id="fat-val">0g</strong></div>
+        </div>
+      </div>
+
+      <!-- Prescrição do Treino -->
+      <div id="workout-card" class="card hidden">
+        <div class="workout-header">
+          <h2>Sua Rotina de Treino</h2>
+          <!-- Cronômetro de Descanso -->
+          <div class="timer-widget">
+            <span>⏱️ Descanso: <strong id="timer-display">00:00</strong></span>
+            <button onclick="startTimer(60)">60s</button>
+            <button onclick="startTimer(90)">90s</button>
+          </div>
+        </div>
+
+        <div id="tabs-container" class="tabs"></div>
+        <div id="workout-details" class="workout-details"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
